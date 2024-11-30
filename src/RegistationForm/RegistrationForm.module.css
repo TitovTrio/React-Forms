@@ -1,0 +1,29 @@
+.header {
+	font-size: x-large;
+	font-weight: bold;
+	margin-bottom: 1%;
+}
+
+.error {
+	color: red;
+	margin-bottom: 1%;
+}
+
+label {
+	display: inline-block;
+	width: 150px;
+}
+
+.button {
+	margin-top: 1%;
+	background-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), 92%);
+	font-size: 18px;
+}
+
+.button:hover {
+	background-color: rgb(205, 243, 205);
+}
+
+.button:disabled {
+	background-color: var(--disabled-color);
+}

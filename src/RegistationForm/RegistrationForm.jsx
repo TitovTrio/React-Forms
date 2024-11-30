@@ -1,7 +1,7 @@
 import { useStore } from './useStore';
 import { passValidator } from './passValidator';
 import { useRef } from 'react';
-import { RegistrationFormLayout } from './registrationFormLayout';
+import { RegistrationFormLayout } from './RegistrationFormLayout';
 
 export const RegistrationForm = () => {
 	const { getState, updateState, resetState } = useStore();
