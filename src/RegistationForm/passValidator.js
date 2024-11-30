@@ -20,9 +20,7 @@ export const passValidator = (pass, password, repeatPassword, submitRef) => {
 	) {
 		error = 'Пароли должны совпадать';
 	} else {
-		submitRef.current.focus();
-		// не работает, потому что кнопка заблокирована пока есть ошибка, но так прописано в ТЗ
-		// когда кнопка разблокируется, фокус не успевает перейти на нее
+		setTimeout(() => submitRef.current.focus(), 0);
 	}
 
 	return error;
