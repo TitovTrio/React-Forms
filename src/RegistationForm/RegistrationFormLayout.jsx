@@ -10,7 +10,7 @@ export const RegistrationFormLayout = ({
 	onPasswordChange,
 	submitRef,
 }) => (
-	<div className={styles.loginForm}>
+	<>
 		<div className={styles.header}>Регистрация</div>
 		<div className={styles.error}>{error}</div>
 		<form onSubmit={onSubmit}>
@@ -49,5 +49,5 @@ export const RegistrationFormLayout = ({
 				Зарегистрироваться
 			</button>
 		</form>
-	</div>
+	</>
 );
