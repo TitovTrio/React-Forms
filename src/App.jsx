@@ -1,8 +1,5 @@
-import ReactLogo from './assets/react.svg?react';
+import { RegistrationForm } from './registrationForm';
 
-export const App = () => (
-	<div>
-		<h1>Hello world!</h1>
-		<ReactLogo />
-	</div>
-);
+export const App = () => {
+	return <RegistrationForm />;
+};
