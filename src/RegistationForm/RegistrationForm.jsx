@@ -1,35 +1,35 @@
-import { useStore } from './useStore';
-import { passValidator, passwordScheme } from './passValidator';
-import { useRef } from 'react';
+import { passwordScheme } from './passValidator';
 import { RegistrationFormLayout } from './RegistrationFormLayout';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const sendFormData = (formdata) => {
+	console.log(formdata);
+};
 
 export const RegistrationForm = () => {
-	const { getState, updateState, resetState } = useStore();
-	const { email, password, repeatPassword, error } = getState();
-	const submitRef = useRef(null);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		defaultValues: {
+			email: '',
+			password: '',
+			repeatPassword: '',
+		},
+		mode: 'onTouched',
+		resolver: yupResolver(passwordScheme),
+	});
 
-	const onSubmit = (event) => {
-		event.preventDefault();
-		console.log(email, password, repeatPassword);
-		resetState();
-	};
-
-	const onPasswordChange = ({ target }) => {
-		const errorText = passValidator(target, passwordScheme, password, repeatPassword);
-		updateState(target.name, target.value, 'error', errorText);
-		!errorText ? setTimeout(() => submitRef.current.focus(), 0) : null;
-	};
+	const error = errors.password?.message || errors.repeatPassword?.message;
 
 	return (
 		<RegistrationFormLayout
-			onSubmit={onSubmit}
-			updateState={updateState}
-			email={email}
-			password={password}
-			repeatPassword={repeatPassword}
 			error={error}
-			submitRef={submitRef}
-			onPasswordChange={onPasswordChange}
+			register={register}
+			handleSubmit={handleSubmit}
+			sendFormData={sendFormData}
 		/>
 	);
 };
